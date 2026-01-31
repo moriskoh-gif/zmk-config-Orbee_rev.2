@@ -22,7 +22,6 @@
     };
 
     behaviors {
-        /* オートマウス用の挙動定義 */
         auto_mouse_layer: auto_mouse_layer {
             compatible = "zmk,input-behavior-tog-layer";
             #binding-cells = <1>;
@@ -30,7 +29,6 @@
             exit-on-interruption;
         };
 
-        /* スクロール用の設定（ここを修正しました） */
         scroller: scroller {
             compatible = "zmk,input-behavior-touch-pad-scroll";
             #binding-cells = <0>;
@@ -38,7 +36,6 @@
             tap-ms = <5>; 
         };
 
-        /* タッチセンサー用の挙動 */
         touch_behavior_1: touch1 {
             compatible = "zmk,behavior-momentary";
             #binding-cells = <0>;
@@ -72,7 +69,6 @@
         };
     };
 
-    /* トラックボールのリスナー設定 */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&vtrackball>;
@@ -102,7 +98,7 @@
 &kp Q                    &kp W         &kp E         &kp R   &kp T                                                 &kp Y            &kp U  &kp I      &kp O    &kp P
 &kp A                    &kp S         &kp D         &kp F   &kp G      &kp EQUAL                &kp LS(LG(S))  &kp H            &kp J  &kp K      &kp L    &kp MINUS
 &mt LEFT_SHIFT Z         &kp X         &kp C         &kp V   &kp B      &kp ESCAPE               &lt 4 DEL      &kp N            &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &tog 6  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &lt 3 BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
+&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &scroller  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &lt 3 BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
             >;
 
             sensor-bindings =
@@ -157,12 +153,11 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans           &trans           &trans                    &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &msc MOVE_X(10)  &msc MOVE_Y(10)  &trans  &trans    &trans  &kp AC_BACK  &mkp MB1  &mkp MB2  &kp AC_FORWARD  &trans
-&trans  &trans  &trans           &trans           &trans  &trans    &trans  &trans  &mkp MB3    &trans    &trans  &trans
-&trans  &trans  &trans           &trans           &trans  &trans    &trans  &trans                              &trans
+&trans  &trans  &trans  &trans  &trans                                      &trans       &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans                    &kp AC_BACK  &mkp MB1  &mkp MB2  &kp AC_FORWARD  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans                    &trans       &mkp MB3  &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans                    &trans                                   &trans
             >;
         };
     };
 };
-&trans  &trans  &trans  &trans  &trans  &trans    &trans       &trans        &trans        &trans        &trans        &trans
