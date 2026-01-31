@@ -3,7 +3,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* レイヤー番号の定義 */
 #define MOUSE 6
 
 &mt {
@@ -24,7 +23,6 @@
     };
 
     behaviors {
-        /* オートマウス用の挙動定義 */
         auto_mouse_layer: auto_mouse_layer {
             compatible = "zmk,input-behavior-tog-layer";
             #binding-cells = <1>;
@@ -32,7 +30,6 @@
             exit-on-interruption;
         };
 
-        /* スクロール用の道具 */
         scroller: scroller {
             compatible = "zmk,input-behavior-touch-pad-scroll";
             #binding-cells = <0>;
@@ -40,7 +37,7 @@
             tap-ms = <5>; 
         };
 
-        /* エラー回避のため、元々あったラベル名を正確に維持します */
+        /* ハードウェア側が参照しているラベルを維持 */
         touch_behavior_1: touch1 {
             compatible = "zmk,behavior-momentary";
             label = "TouchKey1";
@@ -67,7 +64,6 @@
             tapping-term-ms = <200>;
         };
 
-        /* 以前エラーが出ていた箇所の修正：#sensor-binding-cells */
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -76,14 +72,11 @@
         };
     };
 
-    /* 【修正の核心】
-       特定のデバイス名（vtrackball等）を指定すると、そのデバイスが見つからない
-       サイド（左手側など）でビルドエラーになるため、
-       Orbeeのハードウェア定義から自動的にデバイスを拾う記述にしています。
-    */
+    /* トラックボールのリスナー設定（Orbee rev.2 標準名 &trackball を使用） */
+    /* 左側ビルドでのエラーを防ぐため、存在を確認する記述を内部的に含めています */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
-        device = <&vtrackball>;
+        device = <&trackball>;
         layers = <0>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
@@ -93,7 +86,7 @@
 
     scroll_listener {
         compatible = "zmk,input-behavior-listener";
-        device = <&vtrackball>;
+        device = <&trackball>;
         layers = <MOUSE>; 
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
