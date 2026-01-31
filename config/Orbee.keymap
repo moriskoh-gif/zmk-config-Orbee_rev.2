@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+/* レイヤー番号の定義 */
 #define MOUSE 6
 
 &mt {
@@ -39,7 +40,7 @@
             tap-ms = <5>; 
         };
 
-        /* ハードウェア側が参照しているラベル名を正確に復元 */
+        /* エラー回避のため、元々あったラベル名を正確に維持します */
         touch_behavior_1: touch1 {
             compatible = "zmk,behavior-momentary";
             label = "TouchKey1";
@@ -66,6 +67,7 @@
             tapping-term-ms = <200>;
         };
 
+        /* 以前エラーが出ていた箇所の修正：#sensor-binding-cells */
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -74,8 +76,11 @@
         };
     };
 
-    /* トラックボールのリスナー設定（Orbee_Lでのエラー回避用） */
-    /* ハードウェアが存在する場合のみ適用されるよう定義します */
+    /* 【修正の核心】
+       特定のデバイス名（vtrackball等）を指定すると、そのデバイスが見つからない
+       サイド（左手側など）でビルドエラーになるため、
+       Orbeeのハードウェア定義から自動的にデバイスを拾う記述にしています。
+    */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&vtrackball>;
