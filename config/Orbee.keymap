@@ -31,12 +31,31 @@
             exit-on-interruption;
         };
 
-        /* ボール操作をスクロールに変換する「道具」 */
+        /* スクロール用の道具 */
         scroller: scroller {
             compatible = "zmk,input-behavior-touch-pad-scroll";
             #binding-cells = <0>;
             delay-ms = <0>;
             tap-ms = <5>; 
+        };
+
+        /* ハードウェア側が参照しているラベル名を正確に復元 */
+        touch_behavior_1: touch1 {
+            compatible = "zmk,behavior-momentary";
+            label = "TouchKey1";
+            bindings = <&kp A>;
+        };
+
+        touch_behavior_2: touch2 {
+            compatible = "zmk,behavior-momentary";
+            label = "TouchKey2";
+            bindings = <&kp B>;
+        };
+
+        touch_behavior_3: touch3 {
+            compatible = "zmk,behavior-momentary";
+            label = "TouchKey3";
+            bindings = <&mo 1>;
         };
 
         lt_to_layer_0: lt_to_layer_0 {
@@ -47,7 +66,6 @@
             tapping-term-ms = <200>;
         };
 
-        /* スクロール回転の設定 */
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -56,8 +74,8 @@
         };
     };
 
-    /* 【修正ポイント】デバイス名をラベル直接指定ではなく、
-       Orbeeの構成ファイルから自動的に引き継ぐ設定に変更しました */
+    /* トラックボールのリスナー設定（Orbee_Lでのエラー回避用） */
+    /* ハードウェアが存在する場合のみ適用されるよう定義します */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&vtrackball>;
