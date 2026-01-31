@@ -3,7 +3,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-/* 既存の定義と重複するため 100 への再定義は削除し、MOUSEレイヤー番号のみ定義 */
 #define MOUSE 6
 
 &mt {
@@ -66,7 +65,6 @@
             tapping-term-ms = <200>;
         };
 
-        /* 【修正箇所】#sensor-binding-cells (単数形) に直しました */
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -76,9 +74,10 @@
     };
 
     /* トラックボールの動きを監視してレイヤー6(MOUSE)を起動するリスナー */
+    /* device を <&vtrackball> に修正しました */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
-        device = <&trackball>;
+        device = <&vtrackball>;
         layers = <0>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
@@ -87,9 +86,10 @@
     };
 
     /* スクロール加速リスナー */
+    /* device を <&vtrackball> に修正しました */
     scroll_listener {
         compatible = "zmk,input-behavior-listener";
-        device = <&trackball>;
+        device = <&vtrackball>;
         layers = <MOUSE>; 
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
