@@ -110,7 +110,7 @@
 &kp Q                   &kp W         &kp E         &kp R   &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
 &kp A                   &kp S         &kp D         &kp F   &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
 &mt LEFT_SHIFT Z        &kp X         &kp C         &kp V   &kp B      &kp ESCAPE              &lt 4 K_COPY   &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &tog 6  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
+&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &scroller  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
             >;
 
             sensor-bindings =
