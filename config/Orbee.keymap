@@ -32,13 +32,12 @@
             exit-on-interruption;
         };
 
-        /* 【追加】ボール操作をスクロールに変換する「道具」 */
-        /* Keymap Editorでこの名前(scroller)を呼び出せます */
+        /* スクロールBehavior：tap-msを短くして応答性を高めています */
         scroller: scroller {
             compatible = "zmk,input-behavior-touch-pad-scroll";
             #binding-cells = <0>;
             delay-ms = <0>;
-            tap-ms = <20>;
+            tap-ms = <5>; 
         };
 
         touch_behavior_1: touch1 {
@@ -75,7 +74,7 @@
         };
     };
 
-    /* トラックボールの動きを監視してレイヤー6(MOUSE)を起動するリスナー */
+    /* 通常移動：レイヤー0にいる時の挙動 */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball>;
@@ -84,6 +83,21 @@
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
         bindings = <&auto_mouse_layer MOUSE>;
+    };
+
+    /* スクロール加速リスナー：スクロールボタン（scroller）有効時に発動 */
+    /* xy-multiplier を調整することで、回転に対するスクロール量を増減できます */
+    scroll_listener {
+        compatible = "zmk,input-behavior-listener";
+        device = <&trackball>;
+        layers = <MOUSE>; 
+        evt-type = <INPUT_EV_REL>;
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        bindings = <&scroller>;
+        
+        /* 速度倍率の設定（1なら等倍、2なら2倍の速さでスクロール） */
+        xy-multiplier = <1>; 
     };
 
     keymap {
