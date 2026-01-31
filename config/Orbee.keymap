@@ -18,11 +18,11 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "TO_LAYER_0";
         };
     };
 
     behaviors {
+        /* オートマウス用の挙動定義 */
         auto_mouse_layer: auto_mouse_layer {
             compatible = "zmk,input-behavior-tog-layer";
             #binding-cells = <1>;
@@ -30,36 +30,36 @@
             exit-on-interruption;
         };
 
+        /* スクロール用の設定（ここを修正しました） */
         scroller: scroller {
             compatible = "zmk,input-behavior-touch-pad-scroll";
             #binding-cells = <0>;
             delay-ms = <0>;
-            tap-ms = <5>;
+            tap-ms = <5>; 
         };
 
+        /* タッチセンサー用の挙動 */
         touch_behavior_1: touch1 {
             compatible = "zmk,behavior-momentary";
-            label = "TouchKey1";
+            #binding-cells = <0>;
             bindings = <&kp A>;
         };
 
         touch_behavior_2: touch2 {
             compatible = "zmk,behavior-momentary";
-            label = "TouchKey2";
+            #binding-cells = <0>;
             bindings = <&kp B>;
         };
 
         touch_behavior_3: touch3 {
             compatible = "zmk,behavior-momentary";
-            label = "TouchKey3";
+            #binding-cells = <0>;
             bindings = <&mo 1>;
         };
 
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
-
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
@@ -68,20 +68,14 @@
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-
             tap-ms = <20>;
         };
     };
 
-    /* * 【重要】Orbee rev.2 の左右ビルドを通すための設定
-     * trackball というラベルが存在する場合のみ、以下の設定を有効にします。
-     */
-
-    #if EXPOSE_TRACKBALL
-
+    /* トラックボールのリスナー設定 */
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
-        device = <&trackball>;
+        device = <&vtrackball>;
         layers = <0>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
@@ -91,26 +85,24 @@
 
     scroll_listener {
         compatible = "zmk,input-behavior-listener";
-        device = <&trackball>;
-        layers = <MOUSE>;
+        device = <&vtrackball>;
+        layers = <MOUSE>; 
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
         bindings = <&scroller>;
-        xy-multiplier = <1>;
+        xy-multiplier = <1>; 
     };
-
-    #endif
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q                   &kp W         &kp E         &kp R   &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
-&kp A                   &kp S         &kp D         &kp F   &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
-&mt LEFT_SHIFT Z        &kp X         &kp C         &kp V   &kp B      &kp ESCAPE              &lt 4 K_COPY   &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &scroller  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
+&kp Q                    &kp W         &kp E         &kp R   &kp T                                                 &kp Y            &kp U  &kp I      &kp O    &kp P
+&kp A                    &kp S         &kp D         &kp F   &kp G      &kp EQUAL                &kp LS(LG(S))  &kp H            &kp J  &kp K      &kp L    &kp MINUS
+&mt LEFT_SHIFT Z         &kp X         &kp C         &kp V   &kp B      &kp ESCAPE               &lt 4 DEL      &kp N            &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &tog 6  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &lt 3 BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
             >;
 
             sensor-bindings =
@@ -129,7 +121,7 @@
 
         layer_2 {
             bindings = <
-&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                         &kp CARET        &kp AMPERSAND   &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                           &kp CARET        &kp AMPERSAND   &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &kp F8   &kp F7   &kp F6   &kp F5  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &trans  &kp PAGE_UP      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW       &kp PAGE_DOWN
 &kp F4   &kp F3   &kp F2   &kp F1  &kp PERIOD    &kp EQUAL                  &trans  &kp EXCLAMATION  &kp QUESTION    &kp END         &kp RIGHT_BRACE       &kp BACKSLASH
 &trans   &trans   &trans   &trans  &trans        &trans                     &trans  &trans                                                                 &kp PIPE
@@ -165,11 +157,12 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans         &mkp MB3  &trans    &trans            &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp C_AC_BACK  &mkp MB1  &mkp MB2  &kp C_AC_FORWARD  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans         &trans    &trans    &trans            &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                                               &trans
+&trans  &trans  &trans           &trans           &trans                    &trans  &trans    &trans    &trans  &trans
+&trans  &trans  &msc MOVE_X(10)  &msc MOVE_Y(10)  &trans  &trans    &trans  &kp AC_BACK  &mkp MB1  &mkp MB2  &kp AC_FORWARD  &trans
+&trans  &trans  &trans           &trans           &trans  &trans    &trans  &trans  &mkp MB3    &trans    &trans  &trans
+&trans  &trans  &trans           &trans           &trans  &trans    &trans  &trans                              &trans
             >;
         };
     };
 };
+&trans  &trans  &trans  &trans  &trans  &trans    &trans       &trans        &trans        &trans        &trans        &trans
