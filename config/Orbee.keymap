@@ -34,7 +34,7 @@
             compatible = "zmk,input-behavior-touch-pad-scroll";
             #binding-cells = <0>;
             delay-ms = <0>;
-            tap-ms = <5>; 
+            tap-ms = <5>;
         };
 
         touch_behavior_1: touch1 {
@@ -59,6 +59,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
@@ -67,6 +68,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
             tap-ms = <20>;
         };
     };
@@ -74,7 +76,9 @@
     /* * 【重要】Orbee rev.2 の左右ビルドを通すための設定
      * trackball というラベルが存在する場合のみ、以下の設定を有効にします。
      */
+
     #if EXPOSE_TRACKBALL
+
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball>;
@@ -88,13 +92,14 @@
     scroll_listener {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball>;
-        layers = <MOUSE>; 
+        layers = <MOUSE>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
         bindings = <&scroller>;
-        xy-multiplier = <1>; 
+        xy-multiplier = <1>;
     };
+
     #endif
 
     keymap {
@@ -102,10 +107,10 @@
 
         default_layer {
             bindings = <
-&kp Q                    &kp W         &kp E         &kp R   &kp T                                                 &kp Y            &kp U  &kp I      &kp O    &kp P
-&kp A                    &kp S         &kp D         &kp F   &kp G      &kp EQUAL                &kp LS(LG(S))  &kp H            &kp J  &kp K      &kp L    &kp MINUS
-&mt LEFT_SHIFT Z         &kp X         &kp C         &kp V   &kp B      &kp ESCAPE               &lt 4 DEL      &kp N            &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &tog 6  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &lt 3 BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
+&kp Q                   &kp W         &kp E         &kp R   &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
+&kp A                   &kp S         &kp D         &kp F   &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
+&mt LEFT_SHIFT Z        &kp X         &kp C         &kp V   &kp B      &kp ESCAPE              &lt 4 K_COPY   &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&mt LCTRL INT_MUHENKAN  &kp LEFT_WIN  &kp LEFT_ALT  &tog 6  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_CONTROL INT_HENKAN
             >;
 
             sensor-bindings =
@@ -124,7 +129,7 @@
 
         layer_2 {
             bindings = <
-&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                           &kp CARET        &kp AMPERSAND   &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                         &kp CARET        &kp AMPERSAND   &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &kp F8   &kp F7   &kp F6   &kp F5  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &trans  &kp PAGE_UP      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW       &kp PAGE_DOWN
 &kp F4   &kp F3   &kp F2   &kp F1  &kp PERIOD    &kp EQUAL                  &trans  &kp EXCLAMATION  &kp QUESTION    &kp END         &kp RIGHT_BRACE       &kp BACKSLASH
 &trans   &trans   &trans   &trans  &trans        &trans                     &trans  &trans                                                                 &kp PIPE
