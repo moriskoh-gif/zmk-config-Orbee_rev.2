@@ -107,10 +107,10 @@
 
         default_layer {
             bindings = <
-&kp Q                 &kp W      &kp E         &kp R      &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
-&kp A                 &kp S      &kp D         &kp F      &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
-&mt LEFT_SHIFT Z      &kp X      &kp C         &kp V      &kp B      &kp ESCAPE              &kp LC(S)      &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LCTRL LANGUAGE_2  &kp LC(S)  &kp LEFT_ALT  &lt 3 DEL  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_CONTROL LANGUAGE_1
+&kp Q                   &kp W      &kp E    &kp R               &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
+&kp A                   &kp S      &kp D    &kp F               &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
+&mt LEFT_SHIFT Z        &kp X      &kp C    &kp V               &kp B      &kp ESCAPE              &kp LC(S)      &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&mt LCTRL INT_MUHENKAN  &kp LC(S)  &kp DEL  &lt 3 INT_MUHENKAN  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_ALT INT_HENKAN
             >;
 
             sensor-bindings =
@@ -120,19 +120,19 @@
 
         layer_1 {
             bindings = <
-&kp LESS_THAN         &kp GREATER_THAN       &kp DOLLAR        &kp PERCENT     &kp DOUBLE_QUOTES                    &kp TILDE  &kp N7        &kp N8        &kp N9        &kp PLUS
-&kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_BRACKET  &kp UNDERSCORE  &kp COLON          &trans    &trans  &kp EQUAL  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp MINUS
-&kp AT_SIGN           &kp BACKSLASH          &kp AMPERSAND     &kp HASH        &kp SEMICOLON      &trans    &trans  &kp N0     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp SLASH
-&trans                &trans                 &trans            &trans          &trans             &trans    &trans  &trans                                               &kp ASTERISK
+&kp LESS_THAN         &kp GREATER_THAN       &kp DOLLAR     &kp PERCENT     &kp DOUBLE_QUOTES                    &kp TILDE  &kp N7        &kp N8        &kp N9        &kp PLUS
+&kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN    &kp UNDERSCORE  &kp COLON          &trans    &trans  &kp EQUAL  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp MINUS
+&kp LESS_THAN         &kp GREATER_THAN       &kp AMPERSAND  &kp HASH        &kp SEMICOLON      &trans    &trans  &kp N0     &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp SLASH
+&trans                &trans                 &trans         &trans          &trans             &trans    &trans  &trans                                               &kp ASTERISK
             >;
         };
 
         layer_2 {
             bindings = <
-&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                         &kp CARET        &kp AMPERSAND   &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp F8   &kp F7   &kp F6   &kp F5  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &trans  &kp PAGE_UP      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW       &kp PAGE_DOWN
-&kp F4   &kp F3   &kp F2   &kp F1  &kp PERIOD    &kp EQUAL                  &trans  &kp EXCLAMATION  &kp QUESTION    &kp END         &kp RIGHT_BRACE       &kp BACKSLASH
-&trans   &trans   &trans   &trans  &trans        &trans                     &trans  &trans                                                                 &kp PIPE
+&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                         &kp CARET        &kp AMPERSAND    &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&kp F8   &kp F7   &kp F6   &kp F5  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &trans  &kp PAGE_UP      &kp LEFT_ARROW   &kp DOWN_ARROW  &kp RIGHT_ARROW       &kp PAGE_DOWN
+&kp F4   &kp F3   &kp F2   &kp F1  &kp PERIOD    &kp EQUAL                  &trans  &kp EXCLAMATION  &kp EXCLAMATION  &kp QUESTION    &kp TILDE             &kp BACKSLASH
+&trans   &trans   &trans   &trans  &trans        &trans                     &trans  &trans                                                                  &kp PIPE
             >;
         };
 
