@@ -64,15 +64,17 @@
             tapping-term-ms = <200>;
         };
 
-        /* 左エンコーダー用のスクロール動作 */
+        /* ロータリーエンコーダー用のスクロール設定 */
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
+            /* SCRL_UP / SCRL_DOWN はマウスホイールの動作です */
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
             tap-ms = <20>;
         };
     };
 
+    /* * 【重要】Orbee rev.2 の左右ビルドを通すための設定 (そのまま維持) */
     #if EXPOSE_TRACKBALL
     trackball_listener {
         compatible = "zmk,input-behavior-listener";
@@ -99,7 +101,7 @@
     keymap {
         compatible = "zmk,keymap";
         
-
+        /* sensors = ... の行は削除してデフォルト定義を使用します */
 
         default_layer {
             bindings = <
@@ -109,10 +111,11 @@
 &mt LCTRL INT_MUHENKAN  &kp LC(S)   &kp DEL  &lt 3 INT_MUHENKAN   &lt 2 TAB   &mt LEFT_SHIFT SPACE     &lt 1 ENTER     &kp BACKSPACE                                      &mt RIGHT_ALT INT_HENKAN
             >;
 
-            /* * 1つ目: encoder_left0 (スクロール)
-             * 2つ目: encoder_right (音量)
+            /* ▼▼▼ ここを修正しました ▼▼▼
+             * 1つ目と2つ目の両方にスクロール(&scroll_up_down)を割り当てました。
+             * これで左右どちらのエンコーダーもスクロールとして動作するはずです。
              */
-            sensor-bindings = <&scroll_up_down>, <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down>, <&scroll_up_down>;
         };
 
         layer_1 {
