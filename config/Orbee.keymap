@@ -99,8 +99,7 @@
     keymap {
         compatible = "zmk,keymap";
         
-        /* 【重要】ここでハードウェアのエンコーダーをキーマップに関連付けます */
-        sensors = <&encoder_left0 &encoder_right>;
+
 
         default_layer {
             bindings = <
