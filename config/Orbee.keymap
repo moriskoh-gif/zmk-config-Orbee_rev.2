@@ -1,8 +1,8 @@
+#include <input/processors.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <input/processors.dtsi>
 
 #define MOUSE 6
 
@@ -104,8 +104,9 @@
         xy-multiplier = <1>;
     };
 
-/* ▼▼▼ 追加箇所ここから ▼▼▼ */
+    /* ▼▼▼ 追加箇所ここから ▼▼▼ */
     /* 特定レイヤー(例:2)でトラックボールをスクロールにする設定 */
+
     scroll_listener_layer2 {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball>;
@@ -113,9 +114,12 @@
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
+
         /* XYの動きをスクロールイベントに直接変換 */
+
         input-processors = <&zip_xy_to_scroll_mapper>;
     };
+
     /* ▲▲▲ 追加箇所ここまで ▲▲▲ */
 
     #endif
@@ -127,10 +131,10 @@
 
         default_layer {
             bindings = <
-&kp Q                 &kp W      &kp E    &kp R               &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
-&kp A                 &kp S      &kp D    &kp F               &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
-&mt LEFT_SHIFT Z      &kp X      &kp C    &kp V               &kp B      &kp ESCAPE              &kp LC(S)      &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&mt LCTRL LANGUAGE_2  &kp LC(S)  &kp DEL  &lt 3 INT_MUHENKAN  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_ALT LANGUAGE_1
+&kp Q                 &kp W        &kp E           &kp R         &kp T                                             &kp Y          &kp U  &kp I      &kp O    &kp P
+&kp A                 &kp S        &kp D           &kp F         &kp G      &kp EQUAL               &kp LS(LG(S))  &kp H          &kp J  &kp K      &kp L    &kp MINUS
+&mt LEFT_SHIFT Z      &kp X        &kp C           &kp V         &kp B      &kp ESCAPE              &kp LC(S)      &kp N          &kp M  &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
+&mt LCTRL LANGUAGE_2  &kp LC(DEL)  &lt 5 LEFT_WIN  &lt 3 C_MUTE  &lt 2 TAB  &mt LEFT_SHIFT SPACE    &lt 1 ENTER    &kp BACKSPACE                             &mt RIGHT_ALT LANGUAGE_1
             >;
 
             /* ▼▼▼ ここを修正しました ▼▼▼
@@ -138,7 +142,7 @@
              * これで左右どちらのエンコーダーもスクロールとして動作するはずです。
              */
 
-            sensor-bindings = <&inc_dec_kp A B>, <&inc_dec_kp A B>;
+            sensor-bindings = <&scroll_up_down>, <&scroll_up_down>;
         };
 
         layer_1 {
