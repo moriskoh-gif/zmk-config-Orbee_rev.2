@@ -111,7 +111,7 @@
     scroll_listener_layer2 {
         compatible = "zmk,input-behavior-listener";
         device = <&trackball>;
-        layers = <5>;                /* ← 適用したいレイヤー番号を指定 */
+        layers = <3>;                /* ← 適用したいレイヤー番号を指定 */
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
