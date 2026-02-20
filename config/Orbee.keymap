@@ -13,11 +13,13 @@
 
 / {
     /* ▼▼▼ この aliases ブロックを丸ごと追加します ▼▼▼ */
-       aliases {
+
+    aliases {
         led-red = &led0;
         led-green = &led1;
         led-blue = &led2;
     };
+
     /* ▲▲▲ 追加箇所ここまで ▲▲▲ */
 
     combos { compatible = "zmk,combos"; };
@@ -32,11 +34,10 @@
     };
 
     behaviors {
-       auto_mouse_layer: auto_mouse_layer {
+        auto_mouse_layer: auto_mouse_layer {
             compatible = "zmk,input-behavior-tog-layer";
             #binding-cells = <1>;
             time-out-ms = <2000>;
-
             exit-on-interruption;  /* ← コメントアウトを外し、有効化します */
         };
 
@@ -203,9 +204,9 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                    &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans                    &trans  &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans     &trans     &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans                                &trans
             >;
         };
