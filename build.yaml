@@ -19,9 +19,9 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: Orbee_R rgbled_adapter
+    shield: Orbee_R
   - board: seeeduino_xiao_ble
-    shield: Orbee_L rgbled_adapter
+    shield: Orbee_L
   - board: seeeduino_xiao_ble
     shield: settings_reset
  
