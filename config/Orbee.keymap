@@ -13,10 +13,10 @@
 
 / {
     /* ▼▼▼ この aliases ブロックを丸ごと追加します ▼▼▼ */
-    aliases {
-        led-red = &led_red;
-        led-green = &led_green;
-        led-blue = &led_blue;
+       aliases {
+        led-red = &led0;
+        led-green = &led1;
+        led-blue = &led2;
     };
     /* ▲▲▲ 追加箇所ここまで ▲▲▲ */
 
