@@ -168,10 +168,10 @@
 
         layer_2 {
             bindings = <
-&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                         &kp CARET        &kp UP_ARROW    &kp DOUBLE_QUOTES  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp F8   &kp F7   &kp F6   &kp F5  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &trans  &kp LEFT         &kp DOWN_ARROW  &kp RIGHT          &kp LEFT_BRACKET      &kp RIGHT_BRACKET
-&kp F4   &kp F3   &kp F2   &kp F1  &kp PERIOD    &trans                     &trans  &kp EXCLAMATION  &kp QUESTION    &kp TILDE          &kp LESS_THAN         &kp GREATER_THAN
-&trans   &trans   &trans   &trans  &trans        &trans                     &trans  &trans                                                                    &kp PIPE
+&kp F12  &kp F11  &kp F10  &kp F9  &kp PLUS                                                &kp CARET         &kp DOUBLE_QUOTES  &kp UP_ARROW    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+&kp F8   &kp F7   &kp F6   &kp F5  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))    &kp LESS_THAN  &kp GREATER_THAN  &kp LEFT_ARROW     &kp DOWN_ARROW  &kp RIGHT             &kp TILDE
+&kp F4   &kp F3   &kp F2   &kp F1  &kp PERIOD    &trans                     &trans         &kp EXCLAMATION   &kp EXCLAMATION    &kp QUESTION    &kp LEFT_BRACKET      &kp RIGHT_BRACKET
+&trans   &trans   &trans   &trans  &trans        &trans                     &trans         &trans                                                                     &kp PIPE
             >;
         };
 
