@@ -37,7 +37,7 @@
         auto_mouse_layer: auto_mouse_layer {
             compatible = "zmk,input-behavior-tog-layer";
             #binding-cells = <1>;
-            time-out-ms = <2000>;
+            time-out-ms = <10000>;
             exit-on-interruption;  /* ← コメントアウトを外し、有効化します */
         };
 
