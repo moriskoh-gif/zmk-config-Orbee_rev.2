@@ -24,12 +24,12 @@
     };
 
     behaviors {
-        auto_mouse_layer: auto_mouse_layer {
+       auto_mouse_layer: auto_mouse_layer {
             compatible = "zmk,input-behavior-tog-layer";
             #binding-cells = <1>;
             time-out-ms = <2000>;
 
-            /* exit-on-interruption;  ← この行を削除します */
+            exit-on-interruption;  /* ← コメントアウトを外し、有効化します */
         };
 
         scroller: scroller {
