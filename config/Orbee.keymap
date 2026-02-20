@@ -12,6 +12,14 @@
 };
 
 / {
+    /* ▼▼▼ この aliases ブロックを丸ごと追加します ▼▼▼ */
+    aliases {
+        led-red = &led_red;
+        led-green = &led_green;
+        led-blue = &led_blue;
+    };
+    /* ▲▲▲ 追加箇所ここまで ▲▲▲ */
+
     combos { compatible = "zmk,combos"; };
 
     macros {
